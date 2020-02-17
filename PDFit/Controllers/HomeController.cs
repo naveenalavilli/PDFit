@@ -51,7 +51,7 @@ namespace PDFit.Controllers
 
                 //doc.Add(table);
                 ConverterProperties converterProperties = new ConverterProperties();
-                HtmlConverter.ConvertToPdf("<html> <body>  <h1>My First Heading</h1>  <p>My first paragraph.</p>  </body> </html> ", pdf, converterProperties);
+                HtmlConverter.ConvertToPdf(htmlString, pdf, converterProperties);
 
 
                 //doc.Close();
