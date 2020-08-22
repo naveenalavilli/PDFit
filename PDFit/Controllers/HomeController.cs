@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using PDFit.Models;
 using iText.Layout.Properties;
 using iText.Html2pdf;
+using System.Net;
 
 namespace PDFit.Controllers
 {
@@ -29,10 +30,10 @@ namespace PDFit.Controllers
         {
             return View();
         }
-        
+
 
         [HttpPost]
-        public async Task<IActionResult> GetPdfFromHTML(string htmlString)
+        public async Task<IActionResult> GetPdfFromHTML(string htmltext)
         {
             byte[] pdfBytes;
             using (var stream = new MemoryStream())
@@ -40,19 +41,8 @@ namespace PDFit.Controllers
             using (var pdf = new PdfDocument(wri))
             //using (var doc = new Document(pdf))
             {
-                //doc.Add(new Paragraph("Hello World!"));
-
-                //Table table = new Table(UnitValue.CreatePercentArray(8)).UseAllAvailableWidth();
-
-                //for (int i = 0; i < 16; i++)
-                //{
-                //    table.AddCell("hi");
-                //}
-
-                //doc.Add(table);
                 ConverterProperties converterProperties = new ConverterProperties();
-                HtmlConverter.ConvertToPdf(htmlString, pdf, converterProperties);
-
+                HtmlConverter.ConvertToPdf(htmltext, pdf, converterProperties);
 
                 //doc.Close();
                 //doc.Flush();
@@ -60,31 +50,27 @@ namespace PDFit.Controllers
             }
 
 
-            return await Task.FromResult( new FileContentResult(pdfBytes, "application/pdf"));
+            return await Task.FromResult(new FileContentResult(pdfBytes, "application/pdf"));
 
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public async Task<IActionResult> GetPdfFromWebPageURL(string URL)
         {
             byte[] pdfBytes;
             using (var stream = new MemoryStream())
             using (var wri = new PdfWriter(stream))
             using (var pdf = new PdfDocument(wri))
-            using (var doc = new Document(pdf))
+            //using (var doc = new Document(pdf))
             {
-                //doc.Add(new Paragraph("Hello World!"));
 
-                //Table table = new Table(UnitValue.CreatePercentArray(8)).UseAllAvailableWidth();
+                WebClient client = new System.Net.WebClient();
+                string htmlText = client.DownloadString(URL);
 
-                //for (int i = 0; i < 16; i++)
-                //{
-                //    table.AddCell("hi");
-                //}
-
-                //doc.Add(table);
                 ConverterProperties converterProperties = new ConverterProperties();
-                HtmlConverter.ConvertToPdf("<html> <body>  <h1>My First Heading</h1>  <p>My first paragraph.</p>  </body> </html> ",pdf,converterProperties );
 
+               // pdf.AddNewPage();
+                HtmlConverter.ConvertToPdf(htmlText.Trim(), pdf, converterProperties);
 
                 //doc.Close();
                 //doc.Flush();
@@ -92,7 +78,13 @@ namespace PDFit.Controllers
             }
 
 
-            return new FileContentResult(pdfBytes, "application/pdf");
+            return await Task.FromResult(new FileContentResult(pdfBytes, "application/pdf"));
+
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
