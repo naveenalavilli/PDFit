@@ -14,6 +14,8 @@ using PDFit.Models;
 using iText.Layout.Properties;
 using iText.Html2pdf;
 using System.Net;
+using PDFit.Middleware;
+using Microsoft.AspNetCore.Http;
 
 namespace PDFit.Controllers
 {
@@ -32,53 +34,78 @@ namespace PDFit.Controllers
         }
 
 
+        /// <summary>
+        /// Converts HTML String to PDF.
+        /// </summary>
+        /// <param name="htmltext"></param>
+        /// <returns> PDF Document</returns>
         [HttpPost]
-        public async Task<IActionResult> GetPdfFromHTML(string htmltext)
+        [RequestsLimit(Name = "Limit Calls to Convert HTML.", Seconds = 5)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetPDFFromHTML(string htmltext)
         {
             byte[] pdfBytes;
             using (var stream = new MemoryStream())
             using (var wri = new PdfWriter(stream))
             using (var pdf = new PdfDocument(wri))
-            //using (var doc = new Document(pdf))
             {
                 ConverterProperties converterProperties = new ConverterProperties();
                 HtmlConverter.ConvertToPdf(htmltext, pdf, converterProperties);
 
-                //doc.Close();
-                //doc.Flush();
                 pdfBytes = stream.ToArray();
             }
-
-
             return await Task.FromResult(new FileContentResult(pdfBytes, "application/pdf"));
-
         }
 
+        /// <summary>
+        /// Convert a webpage to PDF
+        /// </summary>
+        /// <param name="URL"></param>
+        /// <returns>PDF Document</returns>
         [HttpPost]
-        public async Task<IActionResult> GetPdfFromWebPageURL(string URL)
+        [RequestsLimit(Name = "Limit Calls To Convert URL.", Seconds = 5)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetPDFFromWebPageURL(string URL)
         {
-            byte[] pdfBytes;
-            using (var stream = new MemoryStream())
-            using (var wri = new PdfWriter(stream))
-            using (var pdf = new PdfDocument(wri))
-            //using (var doc = new Document(pdf))
+            Uri urlCheck = new Uri(URL);
+            WebRequest request = WebRequest.Create(urlCheck);
+            request.Timeout = 15000;
+            WebResponse response;
+
+            //Check if page exists
+            try
             {
-
-                WebClient client = new System.Net.WebClient();
-                string htmlText = client.DownloadString(URL);
-
-                ConverterProperties converterProperties = new ConverterProperties();
-
-               // pdf.AddNewPage();
-                HtmlConverter.ConvertToPdf(htmlText.Trim(), pdf, converterProperties);
-
-                //doc.Close();
-                //doc.Flush();
-                pdfBytes = stream.ToArray();
+                response = request.GetResponse();
+            }
+            catch (Exception)
+            {
+                return NotFound("The specified page isn't found.");
             }
 
+            //Lets try to covert that page to PDF
+            try
+            {
+                byte[] pdfBytes;
+                using (var stream = new MemoryStream())
+                using (var wri = new PdfWriter(stream))
+                using (var pdf = new PdfDocument(wri))
+                {
+                    //Get HTML Content from the URL
+                    WebClient client = new System.Net.WebClient();
+                    string htmlText = client.DownloadString(URL);
+                    
+                    //Invoke iText PDF writing method
+                    ConverterProperties converterProperties = new ConverterProperties();
+                    HtmlConverter.ConvertToPdf(htmlText.Trim(), pdf, converterProperties);
 
-            return await Task.FromResult(new FileContentResult(pdfBytes, "application/pdf"));
+                    pdfBytes = stream.ToArray();
+                }
+                return await Task.FromResult(new FileContentResult(pdfBytes, "application/pdf"));
+            }
+            catch (Exception ex)
+            {
+                return NotFound("The specified page isn't found.");
+            }
 
         }
 
