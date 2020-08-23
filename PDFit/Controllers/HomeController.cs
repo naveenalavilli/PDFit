@@ -69,8 +69,18 @@ namespace PDFit.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetPDFfromURL(string URL)
         {
-            Uri urlCheck = new Uri(URL);
-            WebRequest request = WebRequest.Create(urlCheck);
+            Uri urlCheck;
+            WebRequest request;
+            try
+            {
+                urlCheck = new Uri(URL);
+                request = WebRequest.Create(urlCheck);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("The specified URL is not well-formed.");
+            }
             request.Timeout = 15000;
             WebResponse response;
 
