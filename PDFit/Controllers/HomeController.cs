@@ -40,6 +40,7 @@ namespace PDFit.Controllers
         /// <param name="htmltext"></param>
         /// <returns> PDF Document</returns>
         [HttpPost]
+        [Route("/GetPDFFromHTML")]
         [RequestsLimit(Name = "Limit Calls to Convert HTML.", Seconds = 5)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetPDFFromHTML(string htmltext)
@@ -63,9 +64,10 @@ namespace PDFit.Controllers
         /// <param name="URL"></param>
         /// <returns>PDF Document</returns>
         [HttpPost]
+        [Route("/GetPDFfromURL")]
         [RequestsLimit(Name = "Limit Calls To Convert URL.", Seconds = 5)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetPDFFromWebPageURL(string URL)
+        public async Task<IActionResult> GetPDFfromURL(string URL)
         {
             Uri urlCheck = new Uri(URL);
             WebRequest request = WebRequest.Create(urlCheck);
