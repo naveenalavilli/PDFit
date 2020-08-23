@@ -43,7 +43,7 @@ namespace PDFit.Controllers
         [Route("/GetPDFFromHTML")]
         [RequestsLimit(Name = "Limit Calls to Convert HTML.", Seconds = 5)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetPDFFromHTML(string htmltext)
+        public async Task<IActionResult> GetPDFFromHTML(string HTMLText)
         {
             byte[] pdfBytes;
             using (var stream = new MemoryStream())
@@ -51,7 +51,7 @@ namespace PDFit.Controllers
             using (var pdf = new PdfDocument(wri))
             {
                 ConverterProperties converterProperties = new ConverterProperties();
-                HtmlConverter.ConvertToPdf(htmltext, pdf, converterProperties);
+                HtmlConverter.ConvertToPdf(HTMLText, pdf, converterProperties);
 
                 pdfBytes = stream.ToArray();
             }

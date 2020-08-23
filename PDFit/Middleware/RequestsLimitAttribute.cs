@@ -42,7 +42,7 @@ namespace PDFit.Middleware
             {
                 context.Result = new ContentResult
                 {
-                    Content = $"Requests are limited to 1, every {Seconds} seconds.",
+                    Content = $"Too many requests.You cannot make more than 1 request for every {Seconds} seconds.",
                 };
 
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.TooManyRequests;
