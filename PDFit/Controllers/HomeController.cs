@@ -37,9 +37,21 @@ namespace PDFit.Controllers
         /// <summary>
         /// Converts HTML String to PDF.
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /GetPDFFromHTML
+        ///     {
+        ///        "HTMLText": "<html><body>Hello World</body></html>"
+        ///     }
+        /// </remarks>
         /// <param name="htmltext"></param>
         /// <returns> PDF Document</returns>
+        /// <response code="200">Returns the PDF Document</response>
+        /// <response code="491">If too many requests.</response>    
+        /// <response code="400">Bad Request</response>    
         [HttpPost]
+        [Produces("application/pdf")]
         [Route("/GetPDFFromHTML")]
         [RequestsLimit(Name = "Limit Calls to Convert HTML.", Seconds = 5)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -61,9 +73,21 @@ namespace PDFit.Controllers
         /// <summary>
         /// Convert a webpage to PDF
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /GetPDFfromURL
+        ///     {
+        ///        "URL": "http://pdfit.azurewebsites.net/"
+        ///     }
+        /// </remarks>
         /// <param name="URL"></param>
         /// <returns>PDF Document</returns>
+        /// <response code="200">Returns the PDF Document</response>
+        /// <response code="491">If too many requests.</response>    
+        /// <response code="400">Bad Request</response>  
         [HttpPost]
+        [Produces("application/pdf")]
         [Route("/GetPDFfromURL")]
         [RequestsLimit(Name = "Limit Calls To Convert URL.", Seconds = 5)]
         [ProducesResponseType(StatusCodes.Status200OK)]
