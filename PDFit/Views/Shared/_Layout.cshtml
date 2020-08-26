@@ -3,41 +3,62 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PDFit</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Generate PDF files from HTML Content.">
+    <meta name="keywords"
+          content="PDF Generation API,PDF API, PDF Generate,HTML to PDF, URL to PDF">
+    <meta name="author" content="Naveen Alavilli. connect@naveenalavilli.dev">
+    <meta http-equiv="Cache-control" content="public">
+
+    <title>PDFit - generate PDFs</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
+            <div class="">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><h1>PDFit<small class="font-italic text-muted"> Generate PDFs from HTML.</small></h1></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
-                @*<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                    </div>*@
+                </button>              
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - PDFit @*- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+    <footer id="sticky-footer" class="font-small mt-2" style="width:100%">
+
+        <div class="" style="background-color: #254E58;width: 100%">
+
+
+            <div class="footer-copyright py-3" style="background-color: #254E58">
+
+
+                <div class="row text-center">
+                    <div class="col">
+                        <a class="fb-ic" href="https://www.linkedin.com/in/alavilli/" target="_blank">
+                            <i class="fab fa-linkedin-in fa-lg white-text mr-3"></i>
+                        </a>
+
+                        <a class="tw-ic" href="https://twitter.com/nkalavilli" target="_blank">
+                            <i class="fab fa-twitter fa-lg white-text mr-3"> </i>
+                        </a>
+                    </div>
+                    <div class="col" title="Landmark">
+                        <a href="mailto:connect@naveenalavilli.dev" class="text-light font-weight-bold">
+                            connect@naveenalavilli.dev
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

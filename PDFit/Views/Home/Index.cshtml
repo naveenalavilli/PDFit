@@ -3,82 +3,188 @@
 }
 
 
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-header">
-                PDF from HTML Text
+
+<div class="card m-2">
+    <div class="card-header">
+        PDF from HTML Text
+    </div>
+    <div class="card-body">
+
+        <div class="row justify-content-between">
+            <div class="col-md-4 ml-2">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <span class="text-muted">
+                            host:
+                        </span>
+                        <br />
+                        <span class="ml-5 font-weight-bold">
+                            pdfit.azurewebsites.net
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="text-muted">
+                            schemes:
+                        </span>
+                        <br />
+                        <span class="ml-5 font-weight-bold">
+                            https
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="text-muted">
+                            paths:
+                        </span>
+                        <br />
+                        <span class="ml-5 font-weight-bold">
+                            GetPdfFromHTML
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="text-muted">
+                            parameters:
+                        </span>
+                        <br />
+                        <span class="ml-5 font-weight-bold">
+                            - in : body
+                        </span>
+                        <br />
+                        <span class="ml-5 font-weight-bold">
+                            HTMLText :
+                        </span>
+                        <span class="ml-2 font-italic">
+                            [html Text]
+                        </span>
+                    </li>
+                </ul>
+
+
             </div>
-            <div class="card-body">
-                <h5 class="card-title">https://pdfit.azurewebsites.net/GetPdfFromHTML</h5>
+            <div class="col">
 
-                <p>
-                    <span class="text-muted">
-                        host:
-                    </span>
-                    <br />
-                    <span class="ml-2">
-                        pdfit.azurewebsites.net
-                    </span>
-                </p>
-                <p>
-                    <span class="text-muted">
-                        schemes:
-                    </span>
-                    <br />
-                    <span class="ml-2">
-                        https
-                    </span>
-                </p>
-                <p>
-                    <span class="text-muted">
-                        paths:
-                    </span>
-                    <br />
-                    <span class="ml-2">
-                        GetPdfFromHTML
-                    </span>
-                </p>
-                <p>
-                    <span class="text-muted">
-                        parameters:
-                    </span>
-                    <br />
-                    <span class="ml-2">
-                        - in : body
-                    </span>
-                </p>
-                <p>
-                    <span class="ml-3">
-                        HTMLText
-                    </span>                   
-                    <span class="ml-3 font-italic">
-                        html Text
-                    </span>
-                </p>
 
-                <p class="card-text">Convert a HTML text to PDF Document</p>
-                <p>
-                    <script src="https://gist.github.com/naveenalavilli/f3314ad4c94d5f2c312e14057d717b40.js"></script>
-                </p>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link active" id="csharp-tab" data-toggle="tab" href="#csharp" role="tab" aria-controls="csharp" aria-selected="false">C#</a>
+                    </li>
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link" id="python-tab" data-toggle="tab" href="#python" role="tab" aria-controls="Python" aria-selected="false">Python</a>
+                    </li>
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link" id="curl-tab" data-toggle="tab" href="#curl" role="tab" aria-controls="Curl" aria-selected="true">Curl</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane active" id="csharp" role="tabpanel" aria-labelledby="charp-tab">
+                        <script src="https://gist.github.com/naveenalavilli/f3314ad4c94d5f2c312e14057d717b40.js"></script>
+                    </div>
+
+                    <div class="tab-pane fade" id="python" role="tabpanel" aria-labelledby="python-tab">
+                        Python code
+                    </div>
+                    <div class="tab-pane fade" id="curl" role="tabpanel" aria-labelledby="curl-tab">
+                        Curl Code
+                    </div>
+                </div>
             </div>
         </div>
+
+
+
     </div>
 </div>
 
-<div class="row mt-2">
-    <div class="col">
-        <div class="card">
-            <div class="card-header">
-                PDF from Webpage URL
+
+<div class="card mt-2">
+    <div class="card-header">
+        PDF from Webpage URL
+    </div>
+    <div class="card-body">
+
+        <div class="row justify-content-between">
+
+            <div class="col-md-4 ml-2">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <span class="text-muted">
+                            host:
+                        </span>
+                        <br />
+                        <span class="ml-5 font-weight-bold">
+                            pdfit.azurewebsites.net
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="text-muted">
+                            schemes:
+                        </span>
+                        <br />
+                        <span class="ml-5 font-weight-bold">
+                            https
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="text-muted">
+                            paths:
+                        </span>
+                        <br />
+                        <span class="ml-5 font-weight-bold">
+                            GetPDFfromURL
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="text-muted">
+                            parameters:
+                        </span>
+                        <br />
+                        <span class="ml-5 font-weight-bold">
+                            - in : body
+                        </span>
+                        <br />
+                        <span class="ml-5 font-weight-bold">
+                            URL :
+                        </span>
+                        <span class="ml-2 font-italic">
+                            [URL]
+                        </span>
+                    </li>
+                </ul>
+
+
             </div>
-            <div class="card-body">
-                <h5 class="card-title">https://pdfit.azurewebsites.net/GetPDFfromURL</h5>
-                <p class="card-text">Convert a webpage from URL to a PDF document.</p>
-                <p>
-                    <script src="https://gist.github.com/naveenalavilli/1a4d1974352f475716b4dad7aef906ba.js"></script>
-                </p>
+
+
+            <div class="col">
+
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link active" id="csharp-tab" data-toggle="tab" href="#csharp" role="tab" aria-controls="csharp" aria-selected="false">C#</a>
+                    </li>
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link" id="python-tab" data-toggle="tab" href="#python" role="tab" aria-controls="Python" aria-selected="false">Python</a>
+                    </li>
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link" id="curl-tab" data-toggle="tab" href="#curl" role="tab" aria-controls="Curl" aria-selected="true">Curl</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane active" id="csharp" role="tabpanel" aria-labelledby="charp-tab">
+                        <script src="https://gist.github.com/naveenalavilli/1a4d1974352f475716b4dad7aef906ba.js"></script>
+                    </div>
+
+                    <div class="tab-pane fade" id="python" role="tabpanel" aria-labelledby="python-tab">
+                        Python code
+                    </div>
+                    <div class="tab-pane fade" id="curl" role="tabpanel" aria-labelledby="curl-tab">
+                        Curl Code
+                    </div>
+                </div>
             </div>
         </div>
+
+
+
     </div>
 </div>
+
