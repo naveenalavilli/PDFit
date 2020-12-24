@@ -2,9 +2,9 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <blockquote class="blockquote text-center mb-3">
-        <p class="mb-0">RESTful APIs to convert HTML content to PDFs</p>
-    </blockquote>
+<blockquote class="blockquote text-center mb-3">
+    <p class="mb-0">RESTful APIs to convert HTML content to PDFs</p>
+</blockquote>
 
 
 <div class="card m-3 ml-5 mr-5">
@@ -191,3 +191,16 @@
     </div>
 </div>
 
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+
+        $(document).ready(function () {
+           
+            $('a:contains("Somee")').hide();
+            $('div:contains("Somee")').hide();
+            $('div:contains("Somee")').parent().hide();
+
+        });
+    </script>
+}

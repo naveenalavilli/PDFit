@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <StartupObject>PDFit.Program</StartupObject>
+    <UserSecretsId>e4509d36-0ed8-4555-93ce-ea9bf2dffbd8</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
