@@ -2,8 +2,6 @@
 Forked from iText , to enable conversion of HTML content to PDF over REST.
 
 Live app running on 
-[https://pdfit.azurewebsites.net](https://pdfit.azurewebsites.net)
-[http://pdfit.somee.com/](https://pdfit.somee.com)
 [http://pdfit.ml/](https://pdfit.ml)
 
 This is a .Net Core 3.1 MVC based application that serves PDF files from the HTML string.
