@@ -1,3 +1,5 @@
+![Build](https://github.com/naveenalavilli/PDFit/workflows/Build/badge.svg)
+
 ## PDFit
 Forked from [iText](https://github.com/itext) , to enable conversion of HTML content to PDF over REST.
 
