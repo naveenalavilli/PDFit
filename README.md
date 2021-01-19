@@ -1,5 +1,5 @@
 ## PDFit
-Forked from iText , to enable conversion of HTML content to PDF over REST.
+Forked from [iText](https://github.com/itext) , to enable conversion of HTML content to PDF over REST.
 
 This is a .Net Core 3.1 MVC based Web service.
 
