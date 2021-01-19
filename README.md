@@ -13,9 +13,8 @@ If you like or are using this template for your project, please give it a star. 
 
 ## Tech/framework used
 * .Net Core 3.1
-* MS SQL
-* Bootstrap 4
-* JQuery
+* [iText library](https://github.com/itext) 
+* Bootstrap 4 
 
 ## Features
 * Convert HTML formatted content to PDF.
